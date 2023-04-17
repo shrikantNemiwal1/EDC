@@ -19,23 +19,7 @@ const Login = () => {
   console.log(username, password);
 
   return (
-    <Grid container component="main" sx={{ height: "100vh",display:"block" }}>
-      {/* <CssBaseline /> */}
-      {/* <Grid
-        item
-        xs={false}
-        sm={4}
-        md={7}
-        sx={{
-          backgroundRepeat: "no-repeat",
-          backgroundColor: (t) =>
-            t.palette.mode === "light"
-              ? t.palette.grey[50]
-              : t.palette.grey[900],
-          backgroundPosition: "center",
-        }}
-      /> */}
-      {/* <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square> */}
+    <Grid container component="main" sx={{ height: "100vh", display: "block" }}>
       <Box
         sx={{
           my: 8,
@@ -49,8 +33,8 @@ const Login = () => {
         <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
           <Person />
         </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign in
+        <Typography component="h1" variant="h5" sx={{ mt: 4 }}>
+          LOG IN
         </Typography>
         <Box sx={{ mt: 1 }}>
           <TextField
@@ -86,23 +70,14 @@ const Login = () => {
           >
             Sign In
           </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link
-                style={{ textDecoration: "none", color: "primary" }}
-                to="/register-investor"
-              >
-                Sign up as Investor
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link
-                style={{ textDecoration: "none", color: "primary" }}
-                to="/register-startup"
-              >
-                Sign up as Startup
-              </Link>
-            </Grid>
+
+          <Grid item>
+            <Link
+              style={{ textDecoration: "none", color: "primary" }}
+              to="/register-startup"
+            >
+              DON'T HAVE AN ACCOUNT? REGISTER
+            </Link>
           </Grid>
         </Box>
       </Box>
