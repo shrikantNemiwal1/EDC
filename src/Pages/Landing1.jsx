@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import "../styles/landing1.scss";
-import { WidthNormal } from '@mui/icons-material';
+import BannerImg from '../components/BannerImg';
+
 
 const Landing1 = () => {
 
@@ -47,7 +48,10 @@ const Landing1 = () => {
   };
 
   return (
+    <>
 
+    <BannerImg ></BannerImg>
+    <div className='wrapper'>
     <div className='container'>
     <form onSubmit={handleSubmit}>
       <div className="form-row">
@@ -257,6 +261,8 @@ const Landing1 = () => {
       </div>
     </form>
     </div>
+    </div>
+    </>
   );
 };
 
