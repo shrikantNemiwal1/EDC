@@ -4,6 +4,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import Login from "./Pages/Login";
 import RegisterInvestor from "./Pages/RegisterInvestor";
 import RegisterStartup from "./Pages/RegisterStartup";
+import Landing1 from "./Pages/Landing1";
 
 const App = () => {
   return (
@@ -11,6 +12,7 @@ const App = () => {
       <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Login />} />
+          <Route exact path="/Landing" element={<Landing1 />} />
           <Route
             exact
             path="/register-investor"
