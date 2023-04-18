@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import "../styles/landing1.scss";
+import { WidthNormal } from '@mui/icons-material';
 
 const Landing1 = () => {
 
@@ -152,7 +153,7 @@ const Landing1 = () => {
       </div>
 
       <div className="form-row">
-        <label htmlFor="team_members">Name of Team Members <span>Separated by comma</span></label>
+        <label htmlFor="team_members">Name of Team Members <span>(Separated by comma)</span></label>
         <input type="text" id="team_members" name="team_members" value={formData.team_members} onChange={handleInputChange} required />
       </div>
 
