@@ -1,175 +1,102 @@
 import React, { useState } from "react";
-import {
-  Avatar,
-  Button,
-  CssBaseline,
-  TextField,
-  Paper,
-  Box,
-  Grid,
-  Typography,
-  InputAdornment,
-} from "@mui/material";
-import { Link, withRouter } from "react-router-dom";
-import { Person, AccountCircle } from "@mui/icons-material";
-import axios from "axios";
+import { Link } from "react-router-dom";
+import "../styles/pages/signup.scss";
 
-const RegisterStartup = () => {
-  const [emailID, setEmailID] = useState("");
-  const [mobileNo, setMobileNo] = useState(null);
-  const [companyName, setCompanyName] = useState("");
-  const [submit, setSubmit] = useState(false);
-  const [code, setCode] = useState("");
+const Login = () => {
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [company, setCompany] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [otp, setOtp] = useState("");
 
-  console.log(emailID, mobileNo);
+  const handleSubmit = () => {
+    setSubmitted(true);
+  };
 
-  return !submit ? (
-    <Grid container component="main" sx={{ height: "100vh", display: "block" }}>
-      <Box
-        sx={{
-          mx: 8,
-          my: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          verticalAlign: "center",
-        }}
-      >
-        <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
-          <Person />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign Up
-        </Typography>
-        <Box sx={{ mt: 1 }}>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="Email ID"
-            type="email"
-            name="email id"
-            value={emailID}
-            onChange={(e) => setEmailID(e.target.value)}
-            autoComplete="email"
-            autoFocus
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="Mobile No."
-            label="Mobile No."
-            type="text"
-            id="mobileNo"
-            value={mobileNo}
-            onChange={(e) => setMobileNo(e.target.value)}
-            autoComplete="current-password"
-            InputProps={{
-              startAdornment: (
-                <InputAdornment position="start">+91</InputAdornment>
-              ),
-            }}
-          />
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            label="StartUp/Company Name"
-            type="text"
-            name="StartUp/Company Name"
-            value={companyName}
-            onChange={(e) => setCompanyName(e.target.value)}
-            autoComplete="company-name"
-            autoFocus
-          />
-
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-            onClick={() => setSubmit(true)}
-          >
-            SIGN UP
-          </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link style={{ textDecoration: "none", color: "primary" }} to="/">
-                FORGOT PASSWORD
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link style={{ textDecoration: "none", color: "primary" }} to="/">
-                ALREADY HAVE AN ACCOUNT? LOGIN
-              </Link>
-            </Grid>
-          </Grid>
-        </Box>
-      </Box>
-    </Grid>
-  ) : (
-    <Grid container component="main" sx={{ height: "100vh", display: "block" }}>
-      <Box
-        sx={{
-          mx: 8,
-          my: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          verticalAlign: "center",
-        }}
-      >
-        <Avatar sx={{ m: 1, bgcolor: "primary.main" }}>
-          <Person />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign Up
-        </Typography>
-        <Box sx={{ mt: 5 }}>
-          <Typography component="h2" variant="h7">
-            Please enter the security code sent on your Email
-          </Typography>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="code"
-            label="Enter Code"
-            type="text"
-            name="Code"
-            value={code}
-            onChange={(e) => setCode(e.target.value)}
-            autoFocus
-          />
-
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-            onClick={() => console.log("code submit")}
-          >
-            SUBMIT
-          </Button>
-          <Grid container>
-            <Grid item xs>
-              <Link style={{ textDecoration: "none", color: "primary" }} to="/">
-                FORGOT PASSWORD
-              </Link>
-            </Grid>
-            <Grid item>
-              <Link style={{ textDecoration: "none", color: "primary" }} to="/">
-                ALREADY HAVE AN ACCOUNT? LOGIN
-              </Link>
-            </Grid>
-          </Grid>
-        </Box>
-      </Box>
-    </Grid>
+  return (
+    <div className="signup">
+      <div className="signup__container">
+        <h1 className="signup__head">Sign Up</h1>
+        {!submitted ? (
+          <form onSubmit={handleSubmit}>
+            <div className="form-row">
+              <label htmlFor="email">Email ID</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-row">
+              <label htmlFor="phone">Mobile No.</label>
+              <input
+                type="tel"
+                id="phone"
+                name="phone"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                pattern="[0-9]{3}[0-9]{3}[0-9]{4}"
+                placeholder="e.g. 000-000-0000"
+                required
+              />
+            </div>
+            <div className="form-row">
+              <label htmlFor="companyName">StartUp/Company Name</label>
+              <input
+                type="text"
+                id="companyName"
+                name="companyName"
+                value={company}
+                onChange={(e) => setCompany(e.target.value)}
+                required
+              />
+            </div>
+            <div className="form-row">
+              <button className="submit-btn" type="submit">
+                Continue
+              </button>
+            </div>
+          </form>
+        ) : (
+          <div className="signup__confirmation">
+            <p>Please enter the security code sent on your email</p>
+            <form onSubmit={handleSubmit}>
+              <div className="form-row">
+                <label htmlFor="phone"></label>
+                <input
+                  type="tel"
+                  id="otp"
+                  name="otp"
+                  value={otp}
+                  onChange={(e) => setOtp(e.target.value)}
+                  pattern="[0-9]{6}"
+                  placeholder="e.g. 000000"
+                  required
+                />
+              </div>
+              <div className="form-row">
+                <button className="submit-btn" type="submit">
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        )}
+        <Link style={{ textDecoration: "none", color: "primary" }} to="/">
+          FORGOT PASSWORD
+        </Link>
+        <Link
+          style={{ textDecoration: "none", color: "primary" }}
+          to="/register-startup"
+        >
+          ALREADY HAVE AN ACCOUNT? LOGIN
+        </Link>
+      </div>
+    </div>
   );
 };
 
-export default RegisterStartup;
+export default Login;
